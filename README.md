@@ -13,11 +13,11 @@ Deep learning models for automated skin cancer classification using the HAM10000
 
 This project implements and compares **7 different deep learning architectures** for classifying skin lesions into 7 categories of skin cancer. Starting from basic neural networks to advanced transfer learning models (MobileNet, ResNet50, DenseNet121), we achieved:
 
-- **Best Model**: Enhanced MobileNet (84% validation accuracy, 83% test accuracy)
-- **Fastest Model**: Basic CNN (58 minutes for 50 epochs, 76% accuracy)
-- **Most Efficient**: Standard MobileNet (83% accuracy in 54 minutes)
-- **Processing**: 10,000+ dermoscopic images resized to 100×125 pixels
-- **Techniques**: Transfer learning, data augmentation, learning rate scheduling, dropout regularization
+- **Best Model**: Enhanced MobileNet (84% validation accuracy, 83% test accuracy).
+- **Fastest Model**: Basic CNN (58 minutes for 50 epochs, 76% accuracy).
+- **Most Efficient**: Standard MobileNet (83% accuracy in 54 minutes).
+- **Processing**: 10,000+ dermoscopic images resized to 100×125 pixels.
+- **Techniques**: Transfer learning, data augmentation, learning rate scheduling, dropout regularization.
 
 Perfect for medical AI researchers, dermatology applications, and anyone exploring computer vision in healthcare.
 
@@ -28,18 +28,18 @@ Perfect for medical AI researchers, dermatology applications, and anyone explori
 Skin cancer is one of the most common types of cancer worldwide, with early detection being critical for successful treatment. However, several challenges exist:
 
 ### The Diagnostic Challenge
-- **Manual diagnosis is time-consuming** and requires expert dermatologists
-- **Diagnostic accuracy varies** significantly based on physician experience  
-- **Access to specialists is limited** in rural and underserved regions
-- **Early-stage detection rates** need improvement to reduce mortality
-- **Subjective interpretation** can lead to misdiagnosis or delayed treatment
+- **Manual diagnosis is time-consuming** and requires expert dermatologists.
+- **Diagnostic accuracy varies** significantly based on physician experience.  
+- **Access to specialists is limited** in rural and underserved regions.
+- **Early-stage detection rates** need improvement to reduce mortality.
+- **Subjective interpretation** can lead to misdiagnosis or delayed treatment.
 
 ### The Solution
 This project develops an automated classification system that can:
-- Assist dermatologists in identifying different types of skin lesions with high accuracy
-- Provide rapid preliminary screening in areas with limited medical resources
-- Reduce diagnostic variability through standardized AI-based analysis
-- Enable early detection through accessible screening tools
+- Assist dermatologists in identifying different types of skin lesions with high accuracy.
+- Provide rapid preliminary screening in areas with limited medical resources.
+- Reduce diagnostic variability through standardized AI-based analysis.
+- Enable early detection through accessible screening tools.
 
 **Goal**: Build a deep learning model that classifies 7 types of skin lesions with accuracy comparable to dermatologists, using transfer learning to leverage pre-trained medical imaging knowledge.
 
@@ -72,14 +72,14 @@ This project develops an automated classification system that can:
 **Class Imbalance**: The dataset is heavily imbalanced, with Melanocytic Nevi representing 67% of samples while Dermatofibroma represents only 1.1%.
 
 ### Data Preprocessing
-1. **Cleaning**: Removed NULL values, age=0 entries, and unknown metadata
-2. **Image Processing**: Resized all images to 100×125 pixels for computational efficiency
-3. **Normalization**: Applied Z-score normalization (μ=0, σ=1)
-4. **Encoding**: One-hot encoded target labels for multi-class classification
+1. **Cleaning**: Removed NULL values, age=0 entries, and unknown metadata.
+2. **Image Processing**: Resized all images to 100×125 pixels for computational efficiency.
+3. **Normalization**: Applied Z-score normalization (μ=0, σ=1).
+4. **Encoding**: One-hot encoded target labels for multi-class classification.
 5. **Splitting**: 
-   - Training: 67.5% (~6,760 images)
-   - Validation: 7.5% (~751 images)
-   - Testing: 25% (~2,504 images)
+   - Training: 67.5% (~6,760 images).
+   - Validation: 7.5% (~751 images).
+   - Testing: 25% (~2,504 images).
 
 ---
 
@@ -133,14 +133,14 @@ Output(7, Softmax)
 ```
 
 **Training**:
-- Optimizer: Adam (lr=0.00075)
-- Epochs: 50
-- Batch Size: 10
+- Optimizer: Adam (lr=0.00075).
+- Epochs: 50.
+- Batch Size: 10.
 
 **Results**:
-- ⏱️ Time: 15 minutes
-- ✅ Test Accuracy: **69%**
-- ✅ Validation Accuracy: **72%**
+- ⏱️ Time: 15 minutes.
+- ✅ Test Accuracy: **69%**.
+- ✅ Validation Accuracy: **72%**.
 
 **Analysis**: Baseline performance demonstrates that simple fully-connected networks struggle with spatial image features.
 
@@ -156,14 +156,14 @@ Output(7, Softmax)
 ```
 
 **Improvements**:
-- Added convolutional layers to capture spatial features
-- Max pooling for dimensionality reduction
-- Progressive dropout (0.15 → 0.225 → 0.34)
+- Added convolutional layers to capture spatial features.
+- Max pooling for dimensionality reduction.
+- Progressive dropout (0.15 → 0.225 → 0.34).
 
 **Results**:
-- ⏱️ Time: 58 minutes
-- ✅ Test Accuracy: **75%** (+6% vs NN)
-- ✅ Validation Accuracy: **76%** (+4% vs NN)
+- ⏱️ Time: 58 minutes.
+- ✅ Test Accuracy: **75%** (+6% vs NN).
+- ✅ Validation Accuracy: **76%** (+4% vs NN).
 
 **Analysis**: CNNs significantly outperform basic NNs by learning hierarchical visual features.
 
@@ -175,17 +175,17 @@ Output(7, Softmax)
 
 **Enhancements**:
 - **Data Augmentation**:
-  - Rotation: ±10°
-  - Zoom: ±10%
-  - Width/Height Shift: ±12%
-  - Horizontal/Vertical Flip: Yes
-- **Learning Rate Scheduler**: ReduceLROnPlateau (patience=5, factor=0.5)
+  - Rotation: ±10°.
+  - Zoom: ±10%.
+  - Width/Height Shift: ±12%.
+  - Horizontal/Vertical Flip: Yes.
+- **Learning Rate Scheduler**: ReduceLROnPlateau (patience=5, factor=0.5).
 
 **Results**:
-- ⏱️ Time: 58 minutes
-- ✅ Test Accuracy: **76%** (+1% vs CNN1)
-- ✅ Validation Accuracy: **77%** (+1% vs CNN1)
-- 📉 Loss Reduction: Test loss dropped from 106% → **65%**
+- ⏱️ Time: 58 minutes.
+- ✅ Test Accuracy: **76%** (+1% vs CNN1).
+- ✅ Validation Accuracy: **77%** (+1% vs CNN1).
+- 📉 Loss Reduction: Test loss dropped from 106% → **65%**.
 
 **Analysis**: Data augmentation significantly reduces overfitting, improving generalization despite similar accuracy.
 
@@ -200,19 +200,19 @@ GlobalAveragePooling2D → Dropout(0.3) → Dense(7, Softmax)
 ```
 
 **Transfer Learning Strategy**:
-- Pre-trained on ImageNet (1.4M images, 1000 classes)
-- Froze first 64 layers (feature extraction)
-- Fine-tuned last 23 layers (domain adaptation)
+- Pre-trained on ImageNet (1.4M images, 1000 classes).
+- Froze first 64 layers (feature extraction).
+- Fine-tuned last 23 layers (domain adaptation).
 
 **Training**:
-- Optimizer: Adam (lr=0.0001)
-- Data Augmentation: Same as CNN2
-- Learning Rate Scheduler: ReduceLROnPlateau
+- Optimizer: Adam (lr=0.0001).
+- Data Augmentation: Same as CNN2.
+- Learning Rate Scheduler: ReduceLROnPlateau.
 
 **Results**:
-- ⏱️ Time: **54 minutes** (faster than CNN!)
-- ✅ Test Accuracy: **81%** (+5% vs CNN2)
-- ✅ Validation Accuracy: **83%** (+6% vs CNN2)
+- ⏱️ Time: **54 minutes** (faster than CNN!).
+- ✅ Test Accuracy: **81%** (+5% vs CNN2).
+- ✅ Validation Accuracy: **83%** (+6% vs CNN2).
 
 **Analysis**: Transfer learning provides substantial gains by leveraging ImageNet's learned features. MobileNet's efficiency makes it suitable for deployment.
 
@@ -227,17 +227,17 @@ GlobalAveragePooling2D → Dropout(0.3) → Dense(7, Softmax)
 ```
 
 **Distinguishing Features**:
-- Residual connections for deeper networks (50 layers)
-- Skip connections prevent vanishing gradients
+- Residual connections for deeper networks (50 layers).
+- Skip connections prevent vanishing gradients.
 
 **Results**:
-- ⏱️ Time: **217 minutes** (4× slower than MobileNet)
-- ✅ Test Accuracy: **75%** (-6% vs MobileNet)
-- ✅ Validation Accuracy: **77%** (-6% vs MobileNet)
+- ⏱️ Time: **217 minutes** (4× slower than MobileNet).
+- ✅ Test Accuracy: **75%** (-6% vs MobileNet).
+- ✅ Validation Accuracy: **77%** (-6% vs MobileNet).
 
 **Analysis**: Despite deeper architecture, ResNet50 underperforms MobileNet on this dataset. Likely due to:
-- Excessive parameters for dataset size (overfitting)
-- Longer training time without proportional gains
+- Excessive parameters for dataset size (overfitting).
+- Longer training time without proportional gains.
 
 ---
 
@@ -250,13 +250,13 @@ GlobalAveragePooling2D → Dropout(0.3) → Dense(7, Softmax)
 ```
 
 **Distinguishing Features**:
-- Dense connections (each layer receives all prior layers)
-- Parameter efficiency through feature reuse
+- Dense connections (each layer receives all prior layers).
+- Parameter efficiency through feature reuse.
 
 **Results**:
-- ⏱️ Time: **135 minutes**
-- ✅ Test Accuracy: **82%** (best among standard transfer learning)
-- ✅ Validation Accuracy: **81%**
+- ⏱️ Time: **135 minutes**.
+- ✅ Test Accuracy: **82%** (best among standard transfer learning).
+- ✅ Validation Accuracy: **81%**.
 
 **Analysis**: DenseNet achieves the highest test accuracy among standard transfer learning models, demonstrating the value of dense connections for feature reuse.
 
@@ -331,27 +331,27 @@ Model Accuracy                          Model Loss
 
 ### Key Insights
 
-1. **Transfer Learning Dominates**: All transfer learning models (81-84%) significantly outperform custom CNNs (76-77%)
+1. **Transfer Learning Dominates**: All transfer learning models (81-84%) significantly outperform custom CNNs (76-77%).
 
 2. **Model Complexity Trade-off**: 
-   - ResNet50 (50 layers, 217 min) → 75% accuracy
-   - MobileNet (28 layers, 54 min) → 83% accuracy
-   - **Simpler architectures work better** for this dataset size
+   - ResNet50 (50 layers, 217 min) → 75% accuracy.
+   - MobileNet (28 layers, 54 min) → 83% accuracy.
+   - **Simpler architectures work better** for this dataset size.
 
 3. **Training Time vs Performance**:
-   - Diminishing returns after 50 epochs for most models
-   - Enhanced MobileNet's 500 epochs provided only +1-2% gain
-   - **For production, standard MobileNet (54 min) is optimal**
+   - Diminishing returns after 50 epochs for most models.
+   - Enhanced MobileNet's 500 epochs provided only +1-2% gain.
+   - **For production, standard MobileNet (54 min) is optimal**.
 
 4. **Regularization Impact**:
-   - Data augmentation: 76% → 77% (+1%)
-   - Dropout increase (0.3→0.5): 83% → 84% (+1%)
-   - **Multiple regularization techniques compound benefits**
+   - Data augmentation: 76% → 77% (+1%).
+   - Dropout increase (0.3→0.5): 83% → 84% (+1%).
+   - **Multiple regularization techniques compound benefits**.
 
 5. **Class Imbalance Challenge**:
-   - Dataset is 67% Melanocytic Nevi (benign)
-   - Models likely perform better on majority classes
-   - **Future work**: Implement class weighting or focal loss
+   - Dataset is 67% Melanocytic Nevi (benign).
+   - Models likely perform better on majority classes.
+   - **Future work**: Implement class weighting or focal loss.
 
 ---
 
@@ -360,19 +360,19 @@ Model Accuracy                          Model Loss
 ### For Healthcare Providers
 
 **Triage Automation**:
-- **Time Savings**: Screen 100 patients in 5 minutes vs 2+ hours manually
-- **Cost Reduction**: Reduce unnecessary specialist referrals by 30-40%
-- **Access Expansion**: Deploy in rural clinics without on-site dermatologists
+- **Time Savings**: Screen 100 patients in 5 minutes vs 2+ hours manually.
+- **Cost Reduction**: Reduce unnecessary specialist referrals by 30-40%.
+- **Access Expansion**: Deploy in rural clinics without on-site dermatologists.
 
 **Clinical Decision Support**:
-- **Second Opinion**: Provide AI validation for uncertain cases
-- **Consistency**: Eliminate inter-observer variability (10-30% in dermatology)
-- **Documentation**: Generate standardized diagnostic reports
+- **Second Opinion**: Provide AI validation for uncertain cases.
+- **Consistency**: Eliminate inter-observer variability (10-30% in dermatology).
+- **Documentation**: Generate standardized diagnostic reports.
 
 **Measurable Outcomes**:
-- 84% accuracy approaches dermatologist-level performance (85-90%)
-- Inference time: <100ms per image (real-time screening)
-- Deployment-ready: MobileNet fits on edge devices (16MB model size)
+- 84% accuracy approaches dermatologist-level performance (85-90%).
+- Inference time: <100ms per image (real-time screening).
+- Deployment-ready: MobileNet fits on edge devices (16MB model size).
 
 ### For Medical Device Companies
 
@@ -592,6 +592,8 @@ print(classification_report(y_true, y_pred, target_names=cell_types))
 ---
 
 ## 🤝 Contributing
+
+Contributions are welcome:
 
 **How to Contribute**:
 1. Fork the repository
