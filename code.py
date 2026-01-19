@@ -25,6 +25,9 @@ from tensorflow.keras.metrics import categorical_accuracy, top_k_categorical_acc
 from tensorflow.keras.applications import ResNet50, DenseNet121
 from tensorflow.keras.regularizers import l2
 
+#download data
+#https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
+
 #read the data
 df = pd.read_csv('data/HAM10000_metadata.csv')
 
